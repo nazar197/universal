@@ -15,8 +15,8 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
 
     // Регистрация меню
     register_nav_menus( [
-      'header_menu' => 'Меню в шапке',
-      'footer_menu' => 'Меню в подвале'
+      'header_menu' => 'Menu in header',
+      'footer_menu' => 'Menu in footer'
     ] );
   }
 endif;
