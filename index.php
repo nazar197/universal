@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<div class="h1-wrapper">
-  <h1>Hello, world!</h1>
-</div>
+<h1>Hello, world!</h1>
 
 <?php get_footer();
