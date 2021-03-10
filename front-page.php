@@ -114,177 +114,182 @@
     ?>
   </ul>
   <!-- /.article-list -->
-  <ul class="article-grid">
-    <?php		
-    global $post;
+  <div class="main-grid">
+    <ul class="article-grid">
+      <?php		
+      global $post;
 
-    $query = new WP_Query( [
-      'posts_per_page' => 7,
-      'orderby' => 'comment_count',
-      'tag' => 'popular',
-    ] );
+      $query = new WP_Query( [
+        'posts_per_page' => 7,
+        'orderby' => 'comment_count',
+        'tag' => 'popular',
+      ] );
 
-    if ( $query->have_posts() ) {
-      // Счетчик постов
-      $cnt = 0;
+      if ( $query->have_posts() ) {
+        // Счетчик постов
+        $cnt = 0;
 
-      while ( $query->have_posts() ) {
-        $query->the_post();
-        $cnt++;
-        switch ($cnt) {
-          case '1':
-            ?>
-              <li class="article-grid-item article-grid-item-1">
-                <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
-                  <span class="category-name">
-                    <?php 
-                      $category = get_the_category();
-                      echo $category[0]->name; 
-                    ?>
-                  </span>
-                  <!-- /.category-name -->
-                  <h4 class="article-grid-title">
-                    <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
-                  </h4>
-                  <!-- /.article-grid-title -->
-                  <p class="article-grid-excerpt">
-                    <?php echo mb_strimwidth(get_the_excerpt(), 0, 90, '...'); ?>
-                  </p>
-                  <!-- /.article-grid-excerpt -->
-                  <div class="article-grid-info">
-                    <div class="author">
-                      <?php $author_id = get_the_author_meta('ID'); ?>
-                      <img src="<?php echo get_avatar_url($author_id); ?>" alt="author avatar" class="author-avatar">
-                      <span class="author-name">
-                        <strong><?php the_author(); ?></strong>: 
-                        <?php the_author_meta('description'); ?>
-                      </span>
-                      <!-- /.author-name -->
-                    </div>
-                    <!-- /.author -->
-                    <div class="comments">
-                      <img src="<?php echo get_template_directory_uri() . '/assets/images/сomment.svg'; ?>" alt="comment icon" class="comments-icon">
-                      <span class="comments-counter">
-                        <?php comments_number( '0', '1', '%' ) ?>
-                      </span>
-                    </div>
-                    <!-- /.comments -->
-                  </div>
-                  <!-- /.article-grid-info -->
-                </a>
-                <!-- /.article-grid-permalink -->
-              </li>
-              <!-- /.article-grid-item -->
-            <?php 
-            break;
-          case '2':
-            ?>
-              <li class="article-grid-item article-grid-item-2">
-                <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>" class="article-grid-thumb">
-                <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
-                  <span class="tag">
-                    <?php 
-                      $posttags = get_the_tags();
-                      if ($posttags) {
-                        echo $posttags[ has_tag( 'popular' ) ] -> name; 
-                      }
-                    ?>
-                  </span>
-                  <!-- /.tag -->
-                  <span class="category-name">
-                    <?php 
-                      $category = get_the_category();
-                      echo $category[0]->name; 
-                    ?>
-                  </span>
-                  <!-- /.category-name -->
-                  <h4 class="article-grid-title">
-                    <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
-                  </h4>
-                  <!-- /.article-grid-title -->
-                  <div class="article-grid-info">
-                    <div class="author">
-                      <?php $author_id = get_the_author_meta('ID'); ?>
-                      <img src="<?php echo get_avatar_url($author_id); ?>" alt="author avatar" class="author-avatar">
-                      <div class="author-info">
+        while ( $query->have_posts() ) {
+          $query->the_post();
+          $cnt++;
+          switch ($cnt) {
+            case '1':
+              ?>
+                <li class="article-grid-item article-grid-item-1">
+                  <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
+                    <span class="category-name">
+                      <?php 
+                        $category = get_the_category();
+                        echo $category[0]->name; 
+                      ?>
+                    </span>
+                    <!-- /.category-name -->
+                    <h4 class="article-grid-title">
+                      <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
+                    </h4>
+                    <!-- /.article-grid-title -->
+                    <p class="article-grid-excerpt">
+                      <?php echo mb_strimwidth(get_the_excerpt(), 0, 90, '...'); ?>
+                    </p>
+                    <!-- /.article-grid-excerpt -->
+                    <div class="article-grid-info">
+                      <div class="author">
+                        <?php $author_id = get_the_author_meta('ID'); ?>
+                        <img src="<?php echo get_avatar_url($author_id); ?>" alt="author avatar" class="author-avatar">
                         <span class="author-name">
                           <strong><?php the_author(); ?></strong>: 
                           <?php the_author_meta('description'); ?>
                         </span>
                         <!-- /.author-name -->
-                        <span class="date">
-                          <?php the_time('j F'); ?>
-                        </span>
-                        <!-- /.date -->
-                        <div class="comments">
-                          <img src="<?php echo get_template_directory_uri() . '/assets/images/comment-white.svg'; ?>" alt="comment icon" class="comments-icon">
-                          <span class="comments-counter">
-                            <?php comments_number( '0', '1', '%' ) ?>
-                          </span>
-                        </div>
-                        <!-- /.comments -->
-                        <div class="likes">
-                          <img src="<?php echo get_template_directory_uri() . '/assets/images/like.svg'; ?>" alt="like icon" class="likes-icon">
-                          <span class="likes-counter">
-                            <?php comments_number( '0', '1', '%' ) ?>
-                          </span>
-                        </div>
-                        <!-- /.likes -->
                       </div>
-                      <!-- /.author-info -->
+                      <!-- /.author -->
+                      <div class="comments">
+                        <img src="<?php echo get_template_directory_uri() . '/assets/images/сomment.svg'; ?>" alt="comment icon" class="comments-icon">
+                        <span class="comments-counter">
+                          <?php comments_number( '0', '1', '%' ) ?>
+                        </span>
+                      </div>
+                      <!-- /.comments -->
                     </div>
-                    <!-- /.author -->
-                  </div>
-                </a>
-              </li>
-              <!-- /.article-grid-item -->
-            <?php 
-            break;
-          case '3':
+                    <!-- /.article-grid-info -->
+                  </a>
+                  <!-- /.article-grid-permalink -->
+                </li>
+                <!-- /.article-grid-item -->
+              <?php 
+              break;
+            case '2':
+              ?>
+                <li class="article-grid-item article-grid-item-2">
+                  <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>" class="article-grid-thumb">
+                  <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
+                    <span class="tag">
+                      <?php 
+                        $posttags = get_the_tags();
+                        if ($posttags) {
+                          echo $posttags[ has_tag( 'popular' ) ] -> name; 
+                        }
+                      ?>
+                    </span>
+                    <!-- /.tag -->
+                    <span class="category-name">
+                      <?php 
+                        $category = get_the_category();
+                        echo $category[0]->name; 
+                      ?>
+                    </span>
+                    <!-- /.category-name -->
+                    <h4 class="article-grid-title">
+                      <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
+                    </h4>
+                    <!-- /.article-grid-title -->
+                    <div class="article-grid-info">
+                      <div class="author">
+                        <?php $author_id = get_the_author_meta('ID'); ?>
+                        <img src="<?php echo get_avatar_url($author_id); ?>" alt="author avatar" class="author-avatar">
+                        <div class="author-info">
+                          <span class="author-name">
+                            <strong><?php the_author(); ?></strong>: 
+                            <?php the_author_meta('description'); ?>
+                          </span>
+                          <!-- /.author-name -->
+                          <span class="date">
+                            <?php the_time('j F'); ?>
+                          </span>
+                          <!-- /.date -->
+                          <div class="comments">
+                            <img src="<?php echo get_template_directory_uri() . '/assets/images/comment-white.svg'; ?>" alt="comment icon" class="comments-icon">
+                            <span class="comments-counter">
+                              <?php comments_number( '0', '1', '%' ) ?>
+                            </span>
+                          </div>
+                          <!-- /.comments -->
+                          <div class="likes">
+                            <img src="<?php echo get_template_directory_uri() . '/assets/images/like.svg'; ?>" alt="like icon" class="likes-icon">
+                            <span class="likes-counter">
+                              <?php comments_number( '0', '1', '%' ) ?>
+                            </span>
+                          </div>
+                          <!-- /.likes -->
+                        </div>
+                        <!-- /.author-info -->
+                      </div>
+                      <!-- /.author -->
+                    </div>
+                  </a>
+                </li>
+                <!-- /.article-grid-item -->
+              <?php 
+              break;
+            case '3':
+              ?>
+                <li class="article-grid-item article-grid-item-3">
+                  <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
+                    <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>" class="article-thumb">
+                    <h4 class="article-grid-title">
+                      <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
+                    </h4>
+                    <!-- /.article-grid-title -->
+                  </a>
+                  <!-- /.article-grid-permalink -->
+                </li>
+                <!-- /.article-grid-item -->
+              <?php 
+              break;
+            default:
             ?>
-              <li class="article-grid-item article-grid-item-3">
+              <li class="article-grid-item article-grid-item-default">
                 <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
-                  <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>" class="article-thumb">
                   <h4 class="article-grid-title">
-                    <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
+                    <?php echo mb_strimwidth(get_the_title(), 0, 40, '...'); ?>
                   </h4>
                   <!-- /.article-grid-title -->
+                  <p class="article-grid-excerpt">
+                    <?php echo mb_strimwidth(get_the_excerpt(), 0, 70, '...'); ?>
+                  </p>
+                  <!-- /.article-grid-excerpt -->
+                  <span class="article-date">
+                    <?php the_time('j F Y'); ?>
+                  </span>
+                  <!-- /.article-date -->
                 </a>
                 <!-- /.article-grid-permalink -->
               </li>
               <!-- /.article-grid-item -->
             <?php 
-            break;
-          default:
-          ?>
-            <li class="article-grid-item article-grid-item-default">
-              <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
-                <h4 class="article-grid-title">
-                  <?php echo mb_strimwidth(get_the_title(), 0, 40, '...'); ?>
-                </h4>
-                <!-- /.article-grid-title -->
-                <p class="article-grid-excerpt">
-                  <?php echo mb_strimwidth(get_the_excerpt(), 0, 70, '...'); ?>
-                </p>
-                <!-- /.article-grid-excerpt -->
-                <span class="article-date">
-                  <?php the_time('j F Y'); ?>
-                </span>
-                <!-- /.article-date -->
-              </a>
-              <!-- /.article-grid-permalink -->
-            </li>
-            <!-- /.article-grid-item -->
-          <?php 
+          }
         }
+      } else {
+        // Постов не найдено
       }
-    } else {
-      // Постов не найдено
-    }
 
-    wp_reset_postdata(); // Сбрасываем $post
-    ?>
-  </ul>
-  <!-- /.article-grid -->
+      wp_reset_postdata(); // Сбрасываем $post
+      ?>
+    </ul>
+    <!-- /.article-grid -->
+    <!-- Подключаем сайдбар -->
+    <?php get_sidebar( ); ?>
+  </div>
+<!-- /.main-grid -->
 </div>
 <!-- /.container -->
