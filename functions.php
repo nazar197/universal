@@ -33,14 +33,25 @@ add_action( 'after_setup_theme', 'universal_theme_setup' );
 function universal_theme_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Сайдбар на главной', 'universal-theme' ),
+			'name'          => esc_html__( 'Сайдбар c виджетами', 'universal-theme' ),
 			'id'            => 'main-sidebar',
 			'description'   => esc_html__( 'Добавьте виджеты сюда', 'universal-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
+    )
+	);
+  register_sidebar(
+		array(
+			'name'          => esc_html__( 'Сайдбар с последними постами', 'universal-theme' ),
+			'id'            => 'last-posts-sidebar',
+			'description'   => esc_html__( 'Добавьте сюда последние посты', 'universal-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+    )
 	);
 }
 add_action( 'widgets_init', 'universal_theme_widgets_init' );
@@ -169,7 +180,6 @@ function register_downloader_widget() {
 	register_widget( 'Downloader_Widget' );
 }
 add_action( 'widgets_init', 'register_downloader_widget' );
-
 
 // Подключение стилей и скриптов
 function enqueue_universal_style() {
