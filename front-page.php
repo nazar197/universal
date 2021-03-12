@@ -312,8 +312,8 @@
       ?>
     </ul>
     <!-- /.article-grid -->
-    <!-- Подключаем сайдбар -->
-    <?php get_sidebar( ); ?>
+    <!-- Подключаем верхний сайдбар -->
+    <?php get_sidebar('home-top'); ?>
   </div>
 <!-- /.main-grid -->
 </div>
@@ -347,91 +347,96 @@ if ( $query->have_posts() ) {
 wp_reset_postdata(); // Сбрасываем $post
 ?>
 <div class="container">
-  <div class="digest-wrapper">
-    <ul class="digest">
-      <?php		
-      global $post;
+  <div class="main-grid">
+    <div class="digest-wrapper">
+      <ul class="digest">
+        <?php		
+        global $post;
 
-      $query = new WP_Query( [
-        'posts_per_page' => 6,
-        'order' => 'ASC',
-      ] );
+        $query = new WP_Query( [
+          'posts_per_page' => 6,
+          'order' => 'ASC',
+        ] );
 
-      if ( $query->have_posts() ) {
+        if ( $query->have_posts() ) {
 
-        while ( $query->have_posts() ) {
-          $query->the_post();
-      ?>
-      <li class="digest-item">
-        <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
-        <?php 
-          if( has_post_thumbnail() ) {
-            echo '<img src="' . get_the_post_thumbnail_url() . '" alt="' .get_the_title() . '" class="digest-thumb">';
-          }
-          else {
-            echo '<img src="'. esc_url( get_template_directory_uri()) . '/assets/images/img-not-found.jpg" alt="image not found" class="digest-thumb"/>';
-          }
+          while ( $query->have_posts() ) {
+            $query->the_post();
         ?>
-        </a>
-        <div class="digest-info">
-          <button class="bookmark">
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/bookmark.svg'; ?>" alt="bookmark icon" class="bookmark-icon">
-          </button>
-          <a href="<?php the_permalink(); ?>" class="category-link articles">
-            <?php 
-              foreach (get_the_category() as $category) {
-                printf(
-                  '<a href="%s" class="category-link %s">%s</a>',
-                  esc_url( get_category_link( $category )),
-                  esc_html( $category -> slug ),
-                  esc_html( $category->name ),
-                );
-              }
-            ?>
-          </a>
+        <li class="digest-item">
           <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
-            <h3 class="digest-title">
-              <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
-            </h3>
+          <?php 
+            if( has_post_thumbnail() ) {
+              echo '<img src="' . get_the_post_thumbnail_url() . '" alt="' .get_the_title() . '" class="digest-thumb">';
+            }
+            else {
+              echo '<img src="'. esc_url( get_template_directory_uri()) . '/assets/images/img-not-found.jpg" alt="image not found" class="digest-thumb"/>';
+            }
+          ?>
           </a>
-          <p class="digest-excerpt">
-            <?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...'); ?>
-          </p>
-          <div class="digest-footer">
-            <span class="digest-date">
-              <?php the_time('j F'); ?>
-            </span>
-            <!-- /.digest-date -->
-            <div class="comments digest-comments">
-              <img src="<?php echo get_template_directory_uri() . '/assets/images/сomment.svg'; ?>" alt="comment icon" class="comments-icon">
-              <span class="comments-counter">
-                <?php comments_number( '0', '1', '%' ) ?>
+          <div class="digest-info">
+            <button class="bookmark">
+              <img src="<?php echo get_template_directory_uri() . '/assets/images/bookmark.svg'; ?>" alt="bookmark icon" class="bookmark-icon">
+            </button>
+            <a href="<?php the_permalink(); ?>" class="category-link articles">
+              <?php 
+                foreach (get_the_category() as $category) {
+                  printf(
+                    '<a href="%s" class="category-link %s">%s</a>',
+                    esc_url( get_category_link( $category )),
+                    esc_html( $category -> slug ),
+                    esc_html( $category->name ),
+                  );
+                }
+              ?>
+            </a>
+            <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
+              <h3 class="digest-title">
+                <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
+              </h3>
+            </a>
+            <p class="digest-excerpt">
+              <?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...'); ?>
+            </p>
+            <div class="digest-footer">
+              <span class="digest-date">
+                <?php the_time('j F'); ?>
               </span>
+              <!-- /.digest-date -->
+              <div class="comments digest-comments">
+                <img src="<?php echo get_template_directory_uri() . '/assets/images/сomment.svg'; ?>" alt="comment icon" class="comments-icon">
+                <span class="comments-counter">
+                  <?php comments_number( '0', '1', '%' ) ?>
+                </span>
+              </div>
+              <!-- /.comments digest-comments -->
+              <div class="likes digest-likes">
+                <img src="<?php echo get_template_directory_uri() . '/assets/images/like.svg'; ?>" alt="like icon" class="likes-icon">
+                <span class="likes-counter">
+                  <?php comments_number( '0', '1', '%' ) ?>
+                </span>
+              </div>
+              <!-- /.likes digest-likes -->
             </div>
-            <!-- /.comments digest-comments -->
-            <div class="likes digest-likes">
-              <img src="<?php echo get_template_directory_uri() . '/assets/images/like.svg'; ?>" alt="like icon" class="likes-icon">
-              <span class="likes-counter">
-                <?php comments_number( '0', '1', '%' ) ?>
-              </span>
-            </div>
-            <!-- /.likes digest-likes -->
+            <!-- /.digest-footer -->
           </div>
-          <!-- /.digest-footer -->
-        </div>
-        <!-- /.digest-info -->
-      </li>
-      <!-- /.digest-item -->
-      <?php 
+          <!-- /.digest-info -->
+        </li>
+        <!-- /.digest-item -->
+        <?php 
+          }
+        } else {
+          // Постов не найдено
         }
-      } else {
-        // Постов не найдено
-      }
 
-      wp_reset_postdata(); // Сбрасываем $post
-      ?>
-    </ul>
+        wp_reset_postdata(); // Сбрасываем $post
+        ?>
+      </ul>
+    </div>
+    <!-- /.digest-wrapper -->
+    <!-- Подключаем нижний сайдбар -->
+    <?php get_sidebar('home-bottom'); ?>
   </div>
-  <!-- /.digest-wrapper -->
+  <!-- /.main-grid -->
 </div>
 <!-- /.container -->
