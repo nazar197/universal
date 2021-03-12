@@ -784,8 +784,8 @@ body {
       flex-wrap: wrap;
 }
 .widget-social-icon {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 .widget-social .widget-title {
   text-align: center;
@@ -822,4 +822,104 @@ body {
   padding: 5px 15px;
   border: 1px solid #D9DADB;
   border-radius: 5px;
+}
+
+.investigation {
+  padding: 50px 0 55px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.investigation-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  color: #FFFFFF;
+  max-width: 946px;
+  margin: 0 auto 25px;
+}
+
+.digest {
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0 25px;
+  margin-bottom: 60px;
+  list-style: none;
+}
+.digest-wrapper {
+  width: 74%;
+}
+.digest-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 25px 0;
+}
+.digest-item:not(:last-child) {
+  border-bottom: 1px solid #D9DADB;
+}
+.digest-item-permalink {
+  text-decoration: none;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.digest-thumb {
+  width: 336px;
+  height: 195px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 25px;
+}
+.digest-info {
+  position: relative;
+  width: 100%;
+}
+.digest-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 25px;
+  color: #262D33;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  max-width: 400px;
+}
+.digest-excerpt {
+  margin: 0 0 20px;
+}
+.digest-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+.digest-date, .digest-likes, .digest-comments {
+  margin-right: 11px;
+  color: #939699;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bookmark {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.bookmark-icon {
+  fill: #BCBFC2;
 }

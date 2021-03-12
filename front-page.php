@@ -87,6 +87,7 @@
   $myposts = get_posts([ 
     'numberposts' => 4,
     'category_name' => 'articles',
+    'category__not_in' => 41,
     ]);
 
   if( $myposts ){
@@ -225,7 +226,7 @@
                           </div>
                           <!-- /.comments -->
                           <div class="likes">
-                            <img src="<?php echo get_template_directory_uri() . '/assets/images/like.svg'; ?>" alt="like icon" class="likes-icon">
+                            <img src="<?php echo get_template_directory_uri() . '/assets/images/like-white.svg'; ?>" alt="like icon" class="likes-icon">
                             <span class="likes-counter">
                               <?php comments_number( '0', '1', '%' ) ?>
                             </span>
@@ -291,5 +292,117 @@
     <?php get_sidebar( ); ?>
   </div>
 <!-- /.main-grid -->
+</div>
+<!-- /.container -->
+<?php		
+global $post;
+
+$query = new WP_Query( [
+	'posts_per_page' => 1,
+	'category_name'  => 'investigation',
+] );
+
+if ( $query->have_posts() ) {
+	while ( $query->have_posts() ) {
+		$query->the_post();
+		?>
+		<section class="investigation" style="background: linear-gradient(0deg, rgba(64, 48, 61, 0.45), rgba(64, 48, 61, 0.45)), url(<?php echo get_the_post_thumbnail_url(); ?>) no-repeat center center">
+      <div class="container">
+        <h2 class="investigation-title"><?php the_title(); ?></h2>
+        <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.investigation -->
+		<?php 
+	}
+} else {
+	// Постов не найдено
+}
+
+wp_reset_postdata(); // Сбрасываем $post
+?>
+<div class="container">
+  <div class="digest-wrapper">
+    <ul class="digest">
+      <?php		
+      global $post;
+
+      $query = new WP_Query( [
+        'posts_per_page' => 6,
+        'order' => 'ASC',
+        // Выбока запискй для которых установлены миниатюры
+        // (у которых есть произвольное поле _thumbnail_id)
+        'meta_query' => array(
+            array(
+              'key' => '_thumbnail_id',
+              'compare' => 'EXISTS'
+            )
+          )
+      ] );
+
+      if ( $query->have_posts() ) {
+
+        while ( $query->have_posts() ) {
+          $query->the_post();
+      ?>
+      <li class="digest-item">
+        <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
+          <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>" class="digest-thumb">
+        </a>
+        <div class="digest-info">
+          <button class="bookmark">
+            <img src="<?php echo get_template_directory_uri() . '/assets/images/bookmark.svg'; ?>" alt="bookmark icon" class="bookmark-icon">
+          </button>
+          <a href="<?php the_permalink(); ?>" class="category-link articles">
+            <?php 
+              $category = get_the_category();
+              echo $category[0]->name; 
+            ?>
+          </a>
+          <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
+            <h3 class="digest-title">
+              <?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?>
+            </h3>
+          </a>
+          <p class="digest-excerpt">
+            <?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...'); ?>
+          </p>
+          <div class="digest-footer">
+            <span class="digest-date">
+              <?php the_time('j F'); ?>
+            </span>
+            <!-- /.digest-date -->
+            <div class="comments digest-comments">
+              <img src="<?php echo get_template_directory_uri() . '/assets/images/сomment.svg'; ?>" alt="comment icon" class="comments-icon">
+              <span class="comments-counter">
+                <?php comments_number( '0', '1', '%' ) ?>
+              </span>
+            </div>
+            <!-- /.comments digest-comments -->
+            <div class="likes digest-likes">
+              <img src="<?php echo get_template_directory_uri() . '/assets/images/like.svg'; ?>" alt="like icon" class="likes-icon">
+              <span class="likes-counter">
+                <?php comments_number( '0', '1', '%' ) ?>
+              </span>
+            </div>
+            <!-- /.likes digest-likes -->
+          </div>
+          <!-- /.digest-footer -->
+        </div>
+        <!-- /.digest-info -->
+      </li>
+      <!-- /.digest-item -->
+      <?php 
+        }
+      } else {
+        // Постов не найдено
+      }
+
+      wp_reset_postdata(); // Сбрасываем $post
+      ?>
+    </ul>
+  </div>
+  <!-- /.digest-wrapper -->
 </div>
 <!-- /.container -->
