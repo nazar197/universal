@@ -331,14 +331,6 @@ wp_reset_postdata(); // Сбрасываем $post
       $query = new WP_Query( [
         'posts_per_page' => 6,
         'order' => 'ASC',
-        // Выбока запискй для которых установлены миниатюры
-        // (у которых есть произвольное поле _thumbnail_id)
-        'meta_query' => array(
-            array(
-              'key' => '_thumbnail_id',
-              'compare' => 'EXISTS'
-            )
-          )
       ] );
 
       if ( $query->have_posts() ) {
@@ -348,7 +340,14 @@ wp_reset_postdata(); // Сбрасываем $post
       ?>
       <li class="digest-item">
         <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
-          <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>" class="digest-thumb">
+        <?php 
+          if( has_post_thumbnail() ) {
+            echo '<img src="' . get_the_post_thumbnail_url() . '" alt="' .get_the_title() . '" class="digest-thumb">';
+          }
+          else {
+            echo '<img src="'. esc_url( get_template_directory_uri()) . '/assets/images/img-not-found.jpg" alt="image not found" class="digest-thumb"/>';
+          }
+        ?>
         </a>
         <div class="digest-info">
           <button class="bookmark">
