@@ -217,19 +217,6 @@ body {
   height: 45px;
   border-radius: 50%;
 }
-.hero .left .post-categories {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.hero .left .post-categories a {
-  color: #4592ff;
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
 .hero .left .post-title {
   font-size: 40px;
   line-height: 50px;
@@ -266,18 +253,6 @@ body {
   margin: 0;
   border-top: 1px solid #D9DADB;
   min-height: 100px;
-}
-.hero .right .post-categories {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.hero .right .post-categories a {
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-  text-decoration: none;
 }
 .hero .right .post-permalink {
   text-decoration: none;

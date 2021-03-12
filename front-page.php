@@ -26,7 +26,16 @@
           </div>
         </a>
         <div class="post-text">
-          <?php the_category() ?>
+          <?php 
+            foreach (get_the_category() as $category) {
+              printf(
+                '<a href="%s" class="category-link %s">%s</a>',
+                esc_url( get_category_link( $category )),
+                esc_html( $category -> slug ),
+                esc_html( $category -> name ),
+              );
+            }
+          ?>
           <h2 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...'); ?></h2>
           <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
         </div>
@@ -58,7 +67,16 @@
           ?>
             <!-- Выводим записи -->
             <li class="post">
-              <?php the_category() ?>
+              <?php 
+                foreach (get_the_category() as $category) {
+                  printf(
+                    '<a href="%s" class="category-link %s">%s</a>',
+                    esc_url( get_category_link( $category )),
+                    esc_html( $category -> slug ),
+                    esc_html( $category -> name ),
+                  );
+                }
+              ?>
               <a href="<?php echo get_the_permalink(); ?>" class="post-permalink">
                 <h4 class="post-title"><?php the_title(); ?></h4>
               </a>
@@ -140,8 +158,14 @@
                   <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
                     <span class="category-name">
                       <?php 
-                        $category = get_the_category();
-                        echo $category[0]->name; 
+                        foreach (get_the_category() as $category) {
+                          printf(
+                            '<a href="%s" class="category-link %s">%s</a>',
+                            esc_url( get_category_link( $category )),
+                            esc_html( $category -> slug ),
+                            esc_html( $category -> name ),
+                          );
+                        } 
                       ?>
                     </span>
                     <!-- /.category-name -->
@@ -355,8 +379,14 @@ wp_reset_postdata(); // Сбрасываем $post
           </button>
           <a href="<?php the_permalink(); ?>" class="category-link articles">
             <?php 
-              $category = get_the_category();
-              echo $category[0]->name; 
+              foreach (get_the_category() as $category) {
+                printf(
+                  '<a href="%s" class="category-link %s">%s</a>',
+                  esc_url( get_category_link( $category )),
+                  esc_html( $category -> slug ),
+                  esc_html( $category->name ),
+                );
+              }
             ?>
           </a>
           <a href="<?php the_permalink(); ?>" class="digest-item-permalink">
