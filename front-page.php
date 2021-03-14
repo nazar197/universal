@@ -579,8 +579,10 @@ if ( $query->have_posts() ) {
         <?php 
             }
           } else {
-            // Постов не найдено
+            ?><p>Постов нет</p><?php
           }
+
+          wp_reset_postdata(); // Сбрасываем $post
         ?>
         </div>
         <!-- /.career-post -->
@@ -603,7 +605,7 @@ if ( $query->have_posts() ) {
             </h4>
             <!-- /.other-post-title -->
             <p class="other-post-excerpt">
-              <?php echo mb_strimwidth(get_the_excerpt(), 0, 50, '...'); ?>
+              <?php echo mb_strimwidth(get_the_excerpt(), 0, 90, '...'); ?>
             </p>
             <!-- /.other-post-excerpt -->
             <span class="other-post-date">
@@ -630,4 +632,4 @@ if ( $query->have_posts() ) {
   <!-- /.container -->
 </div>
 <!-- /.special -->
-<?php wp_footer(); ?>
+<?php get_footer(); ?>
