@@ -98,7 +98,9 @@ class Downloader_Widget extends WP_Widget {
 		}
 		if ( ! empty( $link ) ) {
 			echo '<a target="_blank" class="widget-link" href="' . $link . '">
-      <img src="' . get_template_directory_uri() . '/assets/images/download.svg" alt="download icon" class="widget-link-icon">
+			<svg class="icon widget-link-icon">
+				<use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#download"></use>
+			</svg>
       Скачать</a>';
 		}
 		echo $args['after_widget'];
@@ -226,28 +228,36 @@ class Social_Widget extends WP_Widget {
 		if ( ! empty( $facebook ) ) {
 			echo '
 				<a target="_blank" class="widget-link" href="' . $facebook . '">
-					<img src="' . get_template_directory_uri() . '/assets/images/facebook.svg" alt="facebook icon" class="widget-social-icon">
+					<svg class="icon widget-social-icon">
+						<use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#facebook"></use>
+					</svg>
 				</a>
 			';
 		}
 		if ( ! empty( $instagram ) ) {
 			echo '
 				<a target="_blank" class="widget-link" href="' . $instagram . '">
-					<img src="' . get_template_directory_uri() . '/assets/images/instagram.svg" alt="instagram icon" class="widget-social-icon">
+					<svg class="icon widget-social-icon">
+						<use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#instagram"></use>
+					</svg>
 				</a>
 			';
 		}
 		if ( ! empty( $youtube ) ) {
 			echo '
 				<a target="_blank" class="widget-link" href="' . $youtube . '">
-					<img src="' . get_template_directory_uri() . '/assets/images/youtube.svg" alt="youtube icon" class="widget-social-icon">
+					<svg class="icon widget-social-icon">
+						<use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#youtube"></use>
+					</svg>
 				</a>
 			';
 		}
 		if ( ! empty( $twitter ) ) {
 			echo '
 				<a target="_blank" class="widget-link" href="' . $twitter . '">
-					<img src="' . get_template_directory_uri() . '/assets/images/twitter.svg" alt="twitter icon" class="widget-social-icon">
+					<svg class="icon widget-social-icon">
+						<use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#twitter"></use>
+					</svg>
 				</a>
 			';
 		}
@@ -383,7 +393,7 @@ class Recent_Posts_Widget extends WP_Widget {
 			}
 			echo '<div class="widget-recent-posts-wrapper">';
 			global $post;
-			$postslist = get_posts( array( 'posts_per_page' => $count, 'order'=> 'ASC', 'orderby' => 'title' ) );
+			$postslist = get_posts( array( 'posts_per_page' => $count, 'order'=> 'DESC') );
 			foreach ( $postslist as $post ){
 				setup_postdata($post);
 				?>
@@ -487,7 +497,10 @@ add_action( 'widgets_init', 'register_recent_posts_widget' );
 function enqueue_universal_style() {
   wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'Roboto-Slab', '//fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+  wp_enqueue_style( 'swiper-slider', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', 'style', time());
   wp_enqueue_style( 'universal-theme', get_template_directory_uri() . '/assets/css/universal-theme.css', 'style', time());
+  wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', 'swiper', time(), true);
+  wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/js/scripts.js', null, time(), true);
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_universal_style' );
 
