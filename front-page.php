@@ -535,7 +535,7 @@ if ( $query->have_posts() ) {
               <use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#images"></use>
             </svg>
             Смотреть фото
-            <span class="photo-report-counter">3</span>
+            <span class="photo-report-counter"><?php echo count($images); ?></span>
           </a>
         </div>
         <!-- /.photo-report-content -->
