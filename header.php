@@ -13,24 +13,29 @@
 <header class="header">
   <div class="container">
     <div class="header-wrapper">
-        <?php 
-          if(has_custom_logo()) {
-            the_custom_logo();
-          } else {
-            echo 'Universal';
-          }
-        ?>
-        <?php 
-          wp_nav_menu( [
-            'theme_location'  => 'header_menu',
-            'container'       => 'nav', 
-            'container_class' => 'header-nav', 
-            'menu_class'      => 'header-menu', 
-            'echo'            => true,
-          ] );
-        ?>
-        <?php get_search_form(); ?>
-      
+      <?php 
+        if(has_custom_logo()) {
+          the_custom_logo();
+        } else {
+          echo 'Universal';
+        }
+
+        wp_nav_menu( [
+          'theme_location'  => 'header_menu',
+          'container'       => 'nav', 
+          'container_class' => 'header-nav', 
+          'menu_class'      => 'header-menu', 
+          'echo'            => true,
+        ] );
+
+        echo get_search_form(); 
+      ?>
+
+      <a href="#" class="header-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+      </a>
     </div>
     <!-- /.header-wrapper -->
   </div>

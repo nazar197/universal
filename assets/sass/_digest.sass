@@ -35,7 +35,7 @@
     margin-bottom: 10px
     max-width: 400px
   &-excerpt
-    margin: 0 0 20px
+    margin: 0 0 30px
   &-footer
     display: flex
     align-items: center
@@ -56,3 +56,33 @@
   padding: 5px
   &-icon
     fill: #BCBFC2
+@media screen and ( max-width: 1200px )
+  .digest
+    margin-right: 30px
+    &-thumb
+      max-width: 250px
+    &-title
+      max-width: 280px
+      font-size: 18px
+@media screen and ( max-width: 1024px )
+  .digest
+    &-item
+      flex-direction: column
+    &-thumb
+      max-width: 100%
+      width: 100%
+      height: 250px
+      margin-bottom: 20px
+@media screen and ( max-width: 960px )
+  .favourites
+    flex-wrap: wrap
+  .digest
+    margin-bottom: 30px
+    margin-right: 0
+    &-wrapper
+      width: 100%
+    &-item
+      justify-content: flex-start
+      align-items: flex-start
+    &-info
+      width: 100%
