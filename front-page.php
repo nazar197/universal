@@ -111,7 +111,7 @@
   $myposts = get_posts([ 
     'numberposts' => 4,
     'category_name' => 'articles',
-    'category__not_in' => 41,
+    'category__not_in' => -41,
     ]);
 
   if( $myposts ){
@@ -592,6 +592,7 @@ if ( $query->have_posts() ) {
 
         $query = new WP_Query( [
           'posts_per_page' => 2,
+          'category__not_in' => [-37, -39],
         ] );
 
         if ( $query->have_posts() ) {
