@@ -518,8 +518,6 @@ if ( $query->have_posts() ) {
               }
             ?>
           </a>
-          <!-- <a href="#" class="author"> -->
-            <!-- <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" class="post-thumb"> -->
             <?php $author_id = get_the_author_meta('ID'); ?>
             <a href="<?php echo get_author_posts_url($author_id); ?>" class="author">
               <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="author-avatar">

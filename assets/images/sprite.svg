@@ -64,4 +64,10 @@
       d="M25 17.8c-2.898 0-6.66.73-6.66.73l-.009.01A2.77 2.77 0 0016 21.277v7.445a2.778 2.778 0 002.338 2.743l.003.004s3.761.731 6.659.731c2.898 0 6.66-.73 6.66-.73A2.78 2.78 0 0034 28.722v-7.446a2.778 2.778 0 00-2.338-2.744C31.66 18.53 27.898 17.8 25 17.8zm-1.8 4.05L28.6 25l-5.4 3.15v-6.3z"
       fill="#fff"></path>
   </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" id="clock">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 14.25a6.75 6.75 0 110-13.5 6.75 6.75 0 010 13.5zm.75-6.75v-3a.75.75 0 00-1.5 0v3.75c0 .414.336.75.75.75h2.25a.75.75 0 000-1.5h-1.5z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 17" id="home">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M2 17h5v-6h4v6h5v-7h2L9 0 0 10h2v7z"></path>
+  </symbol>
 </svg>
