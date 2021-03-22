@@ -518,15 +518,15 @@ if ( $query->have_posts() ) {
               }
             ?>
           </a>
-            <?php $author_id = get_the_author_meta('ID'); ?>
-            <a href="<?php echo get_author_posts_url($author_id); ?>" class="author">
-              <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="author-avatar">
-              <div class="author-bio">
-                <span class="author-name"><?php the_author() ?></span>
-                <span class="author-rank">Разработчик</span>
-              </div>
-            </a>
-          <!-- </a> -->
+          <?php $author_id = get_the_author_meta('ID'); ?>
+          <a href="<?php echo get_author_posts_url($author_id); ?>" class="author">
+            <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="author-avatar">
+            <div class="author-bio">
+              <span class="author-name"><?php the_author() ?></span>
+              <span class="author-rank">Разработчик</span>
+            </div>
+          </a>
+          <!-- /.author -->
           <h3 class="photo-report-title"><?php the_title(); ?></h3>
           <a href="<?php echo get_the_permalink(); ?>" class="button photo-report-button">
             <svg width="19" height="15" class="icon photo-report-icon">
