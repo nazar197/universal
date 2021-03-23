@@ -150,6 +150,8 @@
           /* translators: 1: list of tags. */
           printf( '<span class="tags-links">' . esc_html__( '%1$s', 'universal-theme' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
+        // Share via social networks 
+        meks_ess_share();
       ?>
     </div>
   </footer><!-- .post-footer -->
