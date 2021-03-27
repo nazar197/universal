@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="<?php echo get_post_type(); ?>-header" style="background: linear-gradient(0deg, rgba(38, 45, 51, 0.75), rgba(38, 45, 51, 0.75)), url(
+	<header class="post-header" style="background: linear-gradient(0deg, rgba(38, 45, 51, 0.75), rgba(38, 45, 51, 0.75)), url(
     <?php
     if( has_post_thumbnail() ) {
       echo esc_url(get_the_post_thumbnail_url());
@@ -24,8 +24,8 @@
         <div class="post-header-nav">
           <a class="home-link" href="<?php echo get_home_url(); ?>">
             <svg width="18" height="17" class="icon home-icon">
-                <use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#home"></use>
-              </svg>
+              <use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#home"></use>
+            </svg>
             На главную
           </a>
           <?php  
@@ -114,8 +114,9 @@
 	</header><!-- .post-header -->
 
   <!-- Содержимое поста -->
-	<div class="<?php echo get_post_type(); ?>-content">
+	<div class="post-content">
     <div class="container">
+      <div class="under-author-invisible-block"></div>
       <?php
       the_content(
         sprintf(
@@ -142,7 +143,7 @@
     </div><!-- /.container -->
 	</div><!-- /.post-content -->
 
-  <footer class="<?php echo get_post_type(); ?>-footer">
+  <footer class="post-footer">
     <div class="container">
       <?php 
         $tags_list = get_the_tag_list( '', esc_html_x( '', 'list item separator', 'universal-theme' ) );
@@ -155,4 +156,7 @@
       ?>
     </div>
   </footer><!-- .post-footer -->
+
+  <!-- Подключаем сайдбар с похожими постами -->
+  <?php get_sidebar('related-posts'); ?>
 </article><!-- #post-<?php the_ID(); ?> -->

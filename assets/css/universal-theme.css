@@ -1822,7 +1822,7 @@ body {
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #D9DADB;
-  min-width: 263px;
+  width: 263px;
 }
 .post-author-info {
   display: -webkit-box;
@@ -1899,10 +1899,15 @@ body {
 .post-content p:first-child:first-letter {
   color: #4592FF;
   float: left;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 100px;
   line-height: 75px;
   margin-right: 5px;
+}
+.post-content .under-author-invisible-block {
+  width: 280px;
+  height: 160px;
+  float: right;
 }
 .post-content .has-drop-cap:not(:focus):first-letter {
   color: #4592FF;
@@ -1982,6 +1987,9 @@ body {
   border-radius: 5px;
   margin-right: 10px;
 }
+.post-footer {
+  margin-bottom: 60px;
+}
 
 .meks_ess {
   max-width: 623px;
@@ -1993,4 +2001,72 @@ body {
   font-family: Roboto Slab;
   margin-top: 30px;
   margin-bottom: 25px;
+}
+
+.widget_related-post {
+  background-color: #F5F5F5;
+}
+
+.related-post-list {
+  margin: 0;
+  padding: 60px 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.related-post-item {
+  width: 263px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+}
+.related-post-link {
+  display: block;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.related-post-link img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.related-post-title {
+  margin: 15px 0;
+  font-family: Roboto Slab, Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.563;
+  color: #262D33;
+}
+.related-post-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+  color: #939699;
+}
+.related-post-info svg {
+  fill: #BCBFC2;
+  margin-right: 5px;
+}
+.related-post-comments, .related-post-watched {
+  margin-right: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
