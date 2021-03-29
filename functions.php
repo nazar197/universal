@@ -557,23 +557,25 @@ class Related_Posts_Widget extends WP_Widget {
 		$title = $instance['title'];
 		$count = $instance['count'];
     $categories = get_the_category($post -> ID);
-    $category_name = $categories[0] -> name;
+    $category_name = $categories[0] -> slug;
 
 		echo $args['before_widget'];
-		if ( !empty( $count ) && ($count >= 1) ) {
-			echo '<ul class="related-post-list">';
-			$postslist = get_posts(
-        array(
-          'posts_per_page' => $count,
-          'offset' => 1,
-          'category_name' => $category_name
-          ) );
-			foreach ( $postslist as $post ){
-				setup_postdata($post);
-				?>
-        <li class="related-post-item">
-          <a href="<?php echo get_the_permalink()?>" class="related-post-link">
-            <img src="<?php
+
+		echo '<ul class="related-post-list">';
+
+		$query = new WP_Query( [
+			'posts_per_page' => $count,
+			'offset' => 1,
+			'category_name' => $category_name 
+		] );
+			
+		if ( $query->have_posts() ) {
+
+			while ( $query->have_posts() ) {
+				$query->the_post(); ?>
+				<li class="related-post-item">
+					<a href="<?php echo get_the_permalink()?>" class="related-post-link">
+						<img src="<?php
 							if( has_post_thumbnail() ) {
 								echo esc_url(get_the_post_thumbnail_url());
 							}
@@ -581,32 +583,32 @@ class Related_Posts_Widget extends WP_Widget {
 								echo esc_url( get_template_directory_uri()) . '/assets/images/img-not-found.jpg"';
 							}
 							?>"
-              alt="<?php the_title() ?>">
-          </a>
-          <h5 class="related-post-title">
-          <?php echo mb_strimwidth( get_the_title(), 0, 50, '...') ; ?>
-          </h5>
-          <div class="related-post-info">
-            <span class="related-post-watched">
+							alt="<?php the_title() ?>">
+					</a>
+					<h5 class="related-post-title">
+					<?php echo mb_strimwidth( get_the_title(), 0, 50, '...') ; ?>
+					</h5>
+					<div class="related-post-info">
+						<span class="related-post-watched">
 							<svg width="15" height="15" class="icon watched-icon">
 								<use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#eye"></use>
 							</svg>
-              <?php comments_number('0', '1', '%'); ?>
-            </span>
-            <span class="related-post-comments">
+							<?php comments_number('0', '1', '%'); ?>
+						</span>
+						<span class="related-post-comments">
 							<svg width="15" height="15" class="icon comments-icon">
 								<use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#сomment"></use>
 							</svg>
-              <?php comments_number('0', '1', '%'); ?>
-            </span>
-          </div>
-        </li>
-				<?php
-			}
-      echo '</ul>';
+							<?php comments_number('0', '1', '%'); ?>
+						</span>
+					</div>
+				</li>
+			<?php }
+			echo '</ul>';
 		} else {
-			?><p>Посты отсутсвуют</p><?php
+			?><p class="no-related-posts">Постов из той же категории больше нет</p><?php 
 		}
+
 		wp_reset_postdata();
 		echo $args['after_widget'];
 	}
