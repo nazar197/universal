@@ -1,5 +1,22 @@
   <footer class="footer">
     <div class="container">
+      <div class="footer-form-wrapper">
+        <h3 class="footer-form-title">Подпишитесь на нашу рассылку</h3>
+        <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" class="footer-form">
+          <!-- Email field (required) -->
+          <input type="text" name="email" placeholder="Введите email" required/><br/>
+          <!-- List token -->
+          <!-- Get the token at: https://app.getresponse.com/campaign_list.html -->
+          <input type="hidden" name="campaign_token" value="oNoKy" />
+          <!-- Thank you page -->
+          <input type="hidden" name="thankyou_url" value="<?php echo home_url( 'thankyou' ) ?>"/>
+          <!-- Add subscriber to the follow-up sequence with a specified day (optional) -->
+          <input type="hidden" name="start_day" value="0" />
+          <!-- Subscriber button -->
+          <button type="submit">Подписаться</button>
+        </form>
+      </div>
+      <!-- /.footer-form -->
       <div class="footer-menu-bar">
         <?php dynamic_sidebar( 'sidebar-footer' ); ?>
       </div>
