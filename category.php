@@ -4,17 +4,21 @@
   <div class="post-list">
   <?php while ( have_posts() ){ the_post(); ?>
     <div class="post-card">
-      <img src="
-      <?php if( has_post_thumbnail() ) {
-        echo esc_url(get_the_post_thumbnail_url());
-      }
-      else {
-        echo esc_url( get_template_directory_uri()) . '/assets/images/img-not-found.jpg"';
-      } ?>" alt="" class="post-card-thumb">
+      <a href="<?php the_permalink(); ?>" class="post-card-link">
+        <img src="
+        <?php if( has_post_thumbnail() ) {
+          echo esc_url(get_the_post_thumbnail_url());
+        }
+        else {
+          echo esc_url( get_template_directory_uri()) . '/assets/images/img-not-found.jpg"';
+        } ?>" alt="" class="post-card-thumb">
+      </a> 
       <div class="post-card-text">
-        <h2 class="post-card-title">
-          <?php echo mb_strimwidth(get_the_title(), 0, 20, '...') ?>
-        </h2>
+        <a href="<?php the_permalink(); ?>" class="post-card-link">
+          <h2 class="post-card-title">
+            <?php echo mb_strimwidth(get_the_title(), 0, 20, '...') ?>
+          </h2>
+        </a> 
         <p class="post-card-excerpt">
           <?php echo mb_strimwidth(get_the_excerpt(), 0, 70, '...') ?>
         </p>
@@ -49,7 +53,7 @@
       </div>
       <!-- /.post-card-text -->
     </div>
-    <!-- /.card -->
+    <!-- /.post-card -->
   <?php } 
   if ( ! have_posts() ){ ?>
     Записей нет

@@ -2410,6 +2410,9 @@ nav.navigation.pagination {
 .post-card:not(:last-child) {
   margin-right: 2%;
 }
+.post-card-link {
+  text-decoration: none;
+}
 .post-card-thumb {
   height: 180px;
   width: 100%;
