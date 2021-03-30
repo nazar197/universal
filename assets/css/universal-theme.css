@@ -2310,6 +2310,18 @@ nav.navigation.pagination {
   line-height: 20px;
 }
 
+.pagination-search, .pagination-category {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 30px auto;
+}
+.pagination-search .prev,
+.pagination-search .next, .pagination-category .prev,
+.pagination-category .next {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+}
 .pagination .nav-links {
   margin-top: 40px;
   background-color: #fff;
@@ -2366,4 +2378,110 @@ nav.navigation.pagination {
 }
 .pagination-next-icon {
   margin-left: 5px;
+}
+
+.category {
+  background-color: #E5E5E5;
+}
+.category-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  color: #262D33;
+}
+
+.post-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.post-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 23%;
+  margin-bottom: 30px;
+  position: relative;
+}
+.post-card:not(:last-child) {
+  margin-right: 2%;
+}
+.post-card-thumb {
+  height: 180px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.post-card-text {
+  padding: 15px 25px 25px 25px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.post-card-excerpt {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 64px;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  word-wrap: break-word;
+}
+.post-card-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 25px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.post-card .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: auto;
+  position: absolute;
+  bottom: 25px;
+}
+.post-card .author-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.post-card .author-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: 10px;
+  color: #939699;
+}
+.post-card .author-name {
+  width: 100%;
+  color: #4B5157;
+}
+.post-card .comments, .post-card .likes {
+  margin-left: 10px;
+  font-size: 12px;
+  line-height: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }

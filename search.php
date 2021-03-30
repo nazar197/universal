@@ -75,7 +75,7 @@
           Записей нет
         <?php }?>
       </ul>
-
+      <div class="pagination-search">
       <?php 
         $args = array(
           'prev_text'    => '
@@ -91,6 +91,7 @@
         );
         the_posts_pagination( $args );  
       ?>
+      </div>
     </div>
     <!-- /.digest-wrapper -->
     

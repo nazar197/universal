@@ -1,0 +1,69 @@
+.category
+  background-color: #E5E5E5
+  &-title
+    font-family: Roboto Slab
+    font-style: normal
+    font-weight: bold
+    font-size: 40px
+    line-height: 50px
+    color: #262D33
+.post
+  &-list
+    display: flex
+    flex-wrap: wrap
+  &-card
+    background-color: #fff
+    border-radius: 10px
+    overflow: hidden
+    width: 23%
+    margin-bottom: 30px
+    position: relative
+    &:not(:last-child)
+      margin-right: 2%
+    &-thumb
+      height: 180px
+      width: 100%
+      object-fit: cover
+    &-text
+      padding: 15px 25px 25px 25px
+      height: 100%
+      display: flex
+      flex-direction: column
+    &-excerpt
+      font-size: 14px
+      line-height: 20px
+      margin-bottom: 64px
+      hyphens: auto
+      word-wrap: break-word
+    &-title
+      font-family: Roboto Slab
+      font-style: normal
+      font-weight: bold
+      font-size: 16px
+      line-height: 25px
+      margin-top: 0
+      margin-bottom: 5px
+    .author
+      display: flex
+      align-items: center
+      margin-right: auto
+      position: absolute
+      bottom: 25px
+      &-avatar
+        width: 45px
+        height: 45px
+        border-radius: 50%
+      &-info
+        display: flex
+        flex-wrap: wrap
+        margin-left: 10px
+        color: #939699
+      &-name
+        width: 100%
+        color: #4B5157
+    .comments, .likes
+      margin-left: 10px
+      font-size: 12px
+      line-height: 15px
+      display: flex
+      align-items: center
