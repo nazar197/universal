@@ -83,6 +83,17 @@ function universal_theme_widgets_init() {
       'after_widget'  => '</div></section>',
     )
   );
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Виджеты на странице поиска', 'universal-theme' ),
+			'id'            => 'sidebar-search',
+			'description'   => esc_html__( 'Добавьте виджет сюда', 'universal-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '',
+			'after_title'   => '',
+    )
+	);
 }
 add_action( 'widgets_init', 'universal_theme_widgets_init' );
 
@@ -396,7 +407,7 @@ class Recent_Posts_Widget extends WP_Widget {
 		parent::__construct(
 			'recent_posts_widget', // ID виджета, если не указать (оставить ''), то ID будет равен названию класса в нижнем регистре: recent_posts_widget
 			'Недавно опубликовано',
-			array( 'description' => 'Файлы для скачивания', 'classname' => 'widget-recent-posts', )
+			array( 'description' => 'Недавно опубликованные посты', 'classname' => 'widget-recent-posts', )
 		);
 
 		// скрипты/стили виджета, только если он активен
