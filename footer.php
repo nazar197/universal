@@ -1,5 +1,6 @@
   <footer class="footer">
     <div class="container">
+      <?php if( ! is_page( 'thankyou' ) ) : ?>
       <div class="footer-form-wrapper">
         <h3 class="footer-form-title">Подпишитесь на нашу рассылку</h3>
         <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" class="footer-form">
@@ -17,6 +18,7 @@
         </form>
       </div>
       <!-- /.footer-form -->
+      <?php endif; ?>
       <div class="footer-menu-bar">
         <?php dynamic_sidebar( 'sidebar-footer' ); ?>
       </div>
