@@ -2488,3 +2488,11 @@ nav.navigation.pagination {
       -ms-flex-align: center;
           align-items: center;
 }
+
+.search-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+}
