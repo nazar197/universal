@@ -2,11 +2,9 @@
 <div class="container">
   <h1 class="search-title">
     Результаты поиска по запросу: 
-    <?php 
-    if (isset($_GET['s'])) {
-      echo esc_html($_GET['s']);
-    }
-    ?>
+    <?php if (!empty($_GET['s'])) { 
+      echo esc_html($_GET['s']); 
+    } ?>
   </h1>
   <div class="main-grid">
     <div class="digest-wrapper">
