@@ -12,15 +12,17 @@ Template Post Type: page
     <h1 class="page-title"><?php the_title(); ?></h1>
     <div class="contacts-wrapper">
       <div class="left">
-        <h2 class="contacts-title">Через форму обратной связи</h2>
-        <p>Заполните форму обратной связи</p>
+        <!-- Форма, созданная с помощью кода -->
+        <h2 class="contacts-title">Заполните форму обратной связи</h2>
         <form action="#" class="contacts-form" method="POST">
           <input name="contact_name" type="text" class="input contacts-input" placeholder="Ваше имя">
           <input name="contact_email" type="email" class="input contacts-input" placeholder="Ваш Email">
           <textarea name="contact_comment" id="" class="textarea contacts-textarea" placeholder="Ваш вопрос"></textarea>
           <button type="submit" class="button more">Отправить</button>
         </form>
-        <?php echo do_shortcode('[contact-form-7 id="270" title="Контактная форма"]'); ?>
+
+        <!-- Форма, созданная с помощью плагина CF7 -->
+        <!-- <?php //the_content(); ?> -->
       </div>
       <!-- /.left -->
       <div class="right">

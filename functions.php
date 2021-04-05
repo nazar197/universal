@@ -707,35 +707,30 @@ function enqueue_universal_style() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_universal_style' );
 
-
-// Подключаем ajax
-
+// Подключение ajax
 function adminAjax_data(){
-    wp_localize_script( 'main', 'adminAjax',
+    wp_localize_script( 'jquery', 'adminAjax',
     array(
         'url' => admin_url('admin-ajax.php')
         )
     );
 }
-add_action('wp_ajax_contacts_form', 'ajax_form');
-add_action('wp_ajax_nopriv_contacts_form', 'ajax_form');
+add_action( 'wp_enqueue_scripts', 'adminAjax_data', 99 );
+
 function ajax_form() {
 	$contact_name = $_POST['contact_name'];
 	$contact_email = $_POST['contact_email'];
 	$contact_comment = $_POST['contact_comment'];
 	$message = 'Пользователь оставил заявку. Его имя: ' . $contact_name . '<br> Его email: ' . $contact_email . '<br> Текст заявки: ' . $contact_comment;
 	$headers = 'From: Назар <nazar.webrazrabotchik@yandex.ua>' . "\r\n";
-	$sent_message = wp_mail('nazar.webrazrabotchik@yandex.ru
-', 'Новая заявка с сайта', $message, $headers);
-	if ($sent_message) {
-			echo 'успех';
-	} else {
-			echo 'ошибка';
-	}
+	$sent_message = wp_mail('nazar.webrazrabotchik@yandex.ru', 'Новая заявка с сайта', $message, $headers);
+	echo $sent_message ? 'успех' : 'ошибка';
 
 	wp_die();
 }
-add_action( 'wp_enqueue_scripts', 'adminAjax_data', 99 );
+add_action('wp_ajax_contacts_form', 'ajax_form');
+add_action('wp_ajax_nopriv_contacts_form', 'ajax_form');
+
 
 ## изменяем настройки облака тегов
 add_filter( 'widget_tag_cloud_args', 'edit_widget_tag_cloud_args');

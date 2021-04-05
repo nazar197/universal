@@ -19,6 +19,7 @@ const swiper = new Swiper(".swiper-container", {
   },
 });
 
+// Contact Form 7 script settings
 let contactsForm = $(".contacts-form");
 
 contactsForm.on("submit", function (event) {
@@ -34,7 +35,7 @@ contactsForm.on("submit", function (event) {
     contentType: false,
     processData: false,
     success: function (response) {
-      alert("Ответ сервера " + response);
+      alert("Ответ сервера: " + response);
     },
   });
 });
