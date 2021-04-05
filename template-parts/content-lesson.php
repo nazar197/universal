@@ -17,13 +17,13 @@
           <?php
             $video_link = get_field('video_link');
             if ( strpos($video_link, 'youtube') ) {
-              $tmp = explode('?v=', get_field('video_link'));
+              $tmp = explode('?v=', $video_link);
               ?>
               <iframe width="100%" height="450" src="https://www.youtube.com/embed/<?php echo end ($tmp); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <?php
             }
             if ( strpos($video_link, 'vimeo') ) {
-              $tmp = explode('vimeo.com/', get_field('video_link'));
+              $tmp = explode('vimeo.com/', $video_link);
               ?>
               <iframe src="https://player.vimeo.com/video/<?php echo end ($tmp); ?>" width="100%" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             <?php
