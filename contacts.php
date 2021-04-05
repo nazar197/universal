@@ -27,9 +27,24 @@ Template Post Type: page
       <!-- /.left -->
       <div class="right">
         <h2 class="contacts-title">Или по этим контактам</h2>
-        <a href="mailto:world@forpeople.studio">world@forpeople.studio </a>
-        <address>3522 I-75, Business Spur Sault Sainte Marie, MI, 49783</address>
-        <a href="tel:+2 800 089 45-34">+2 800 089 45-34</a>
+        <?php
+          $email = get_post_meta( get_the_ID(), 'email', true);
+          $address = get_post_meta( get_the_ID(), 'address', true);
+          $phone = get_post_meta( get_the_ID(), 'phone', true);
+          if ($email) {
+              echo '<a href="mailto:' . $email . '">' . $email . '</a>';
+          }
+          if ($address) {
+              echo '<address>' . $address . '</address>';
+          }
+          if ($phone) {
+              echo '<a href="tel:' . $phone . '">' . $phone . '</a>';
+          }
+          ?>
+        <!-- <h2 class="contacts-title">Или по этим контактам</h2>
+        <a href="mailto:world@forpeople.studio"><?php //the_field('email'); ?></a>
+        <address><?php //the_field('address'); ?></address>
+        <a href="tel:<?php //the_field('phone'); ?>"><?php //the_field('phone'); ?></a> -->
       </div>
       <!-- /.right -->
     </div>
