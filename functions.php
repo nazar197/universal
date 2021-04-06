@@ -57,6 +57,60 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
 				'query_var'           => true,
 			] );
 		}
+
+		// Хук, через который подключается функция
+		// регистрирующая новые таксономии (create_lesson_taxonomies)
+		add_action( 'init', 'create_lesson_taxonomies' );
+
+    // функция, создающая 2 новые таксономии "genres" и "Teachers" для постов типа "lesson"
+    function create_lesson_taxonomies(){
+
+      // Добавляем древовидную таксономию 'genre' (как категории)
+      register_taxonomy('genre', ['lesson'], [
+        'hierarchical'  => true,
+        'labels'        => [
+					'name'              => _x( 'Жанры', 'taxonomy general name' ),
+					'singular_name'     => _x( 'Жанр', 'taxonomy singular name' ),
+					'search_items'      =>  __( 'Искать жанры' ),
+					'all_items'         => __( 'Все жанры' ),
+					'parent_item'       => __( 'Родительский жанр' ),
+					'parent_item_colon' => __( 'Родительский жанр:' ),
+					'edit_item'         => __( 'Редактировать жанр' ),
+					'update_item'       => __( 'Обновить жанр' ),
+					'add_new_item'      => __( 'Добавить новый жанр' ),
+					'new_item_name'     => __( 'Имя нового жанра' ),
+					'menu_name'         => __( 'Жанр' ),
+				],
+        'show_ui'       => true,
+        'query_var'     => true,
+        'rewrite'       => [ 'slug' => 'genre' ], // свой слаг в URL
+			] );
+
+      // Добавляем НЕ древовидную(плоскую) таксономию 'teacher' (как метки)
+      register_taxonomy('teacher', 'lesson', [
+        'hierarchical'  => false,
+        'labels'        => [
+          'name'                        => _x( 'Преподаватели', 'taxonomy general name' ),
+					'singular_name'               => _x( 'Преподаватель', 'taxonomy singular name' ),
+					'search_items'                => __( 'Поиск преподавателей' ),
+					'popular_items'               => __( 'Популярные преподаватели' ),
+					'all_items'                   => __( 'Все предподаватели' ),
+					'parent_item'                 => null,
+					'parent_item_colon'           => null,
+					'edit_item'                   => __( 'Редактировать преподавателя' ),
+					'update_item'                 => __( 'Обновить преподавателя' ),
+					'add_new_item'                => __( 'Добавить нового преподавателя' ),
+					'new_item_name'               => __( 'Имя нового преподавателя' ),
+					'separate_items_with_commas'  => __( 'Разделите имена преподавателей запятыми' ),
+					'add_or_remove_items'         => __( 'Добавить или убрать преподавателя' ),
+					'choose_from_most_used'       => __( 'Выберите из наиболее популярных преподавателей' ),
+					'menu_name'                   => __( 'Преподаватели' ),
+				],
+        'show_ui'       => true,
+        'query_var'     => true,
+        'rewrite'       => [ 'slug' => 'teacher' ], // свой слаг в URL
+			] );
+		}
   }
 endif;
 add_action( 'after_setup_theme', 'universal_theme_setup' );
