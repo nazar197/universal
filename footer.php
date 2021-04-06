@@ -1,6 +1,6 @@
   <footer class="footer">
     <div class="container">
-      <?php if( ! is_page( 'thankyou' ) ) : ?>
+      <?php if( ! is_page( 'thankyou' ) && ! is_404()  ) : ?>
       <div class="footer-form-wrapper">
         <h3 class="footer-form-title">Подпишитесь на нашу рассылку</h3>
         <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" class="footer-form">

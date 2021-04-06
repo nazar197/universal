@@ -8,7 +8,7 @@
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> style="background-color: #E5E5E5;">
 <?php wp_body_open(); ?>
 <header class="header">
   <div class="container">
