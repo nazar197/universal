@@ -1,5 +1,5 @@
 # universal
-WP project. [ Project status: in development ]
+GloAcedemy WordPress course project. [ Project status: <span style="color:yellow">in development</span> ]
 
 ## To-Do list:
 
@@ -27,14 +27,16 @@ WP project. [ Project status: in development ]
 - [x] ~~22. Add custom fields to the contacts page & the footer~~
 - [x] ~~23. Create an own post type - lesson~~
 - [x] ~~24. Add taxonomies(genre, teacher)~~
-- [ ] 25. Add breadcrumbs 
-- [ ] 26. Implement a theme translation
-- [ ] 27. Set roles for users
+- [ ] 25. Add breadcrumbs(additional)
+- [ ] 26. Implement a theme translation(additional)
+- [ ] 27. Set roles for users(additional)
 - [x] ~~28. Deploy a site on a hosting(current tmp-version)~~
-- [ ] 29. Set the SEO for the site 
+- [ ] 29. Set the SEO for the site(additional)
 - [x] ~~30. Create a 404 page(additional)~~
 - [ ] 31. Make all pages adaptive(additional)
-- [ ] 31. Set with a content all posts(additional)
+- [ ] 32. Set with a content all posts(additional)
+- [ ] 33. Refactor the code(additional)
+- [ ] 34. Deploy a final version of the site on a hosting(additional)
 
 ---
 
