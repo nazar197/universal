@@ -45,13 +45,13 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
 				'public'              => true,
 				'show_in_menu'        => true, // показывать ли в меню адмнки
 				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
-				'rest_base'           => null, // $post_type. C WP 4.7
+				'rest_base'           => 'lesson', // $post_type. C WP 4.7
 				'menu_position'       => 5,
 				'menu_icon'           => 'dashicons-welcome-learn-more',
 				'capability_type'   => 'post',
 				'hierarchical'        => false,
 				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-				'taxonomies'          => [],
+				'taxonomies'          => ['genre', 'teacher'],
 				'has_archive'         => true,
 				'rewrite'             => true,
 				'query_var'           => true,
@@ -83,7 +83,12 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
 				],
         'show_ui'       => true,
         'query_var'     => true,
-        'rewrite'       => [ 'slug' => 'genre' ], // свой слаг в URL
+        'rewrite'       => [ 'slug' => 'the_genre' ], // свой слаг в URL
+
+				'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+				'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+				'show_in_rest'          => true, // добавить в REST API
+				'rest_base'             => 'genre', // $taxonomy
 			] );
 
       // Добавляем НЕ древовидную(плоскую) таксономию 'teacher' (как метки)
@@ -108,7 +113,12 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
 				],
         'show_ui'       => true,
         'query_var'     => true,
-        'rewrite'       => [ 'slug' => 'teacher' ], // свой слаг в URL
+        'rewrite'       => [ 'slug' => 'the_teacher' ], // свой слаг в URL
+
+				'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+				'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+				'show_in_rest'          => true, // добавить в REST API
+				'rest_base'             => 'teacher', // $taxonomy
 			] );
 		}
   }
@@ -790,10 +800,10 @@ function enqueue_universal_style() {
 	wp_deregister_script( 'jquery-core' );
 	wp_register_script( 'jquery-core', '//code.jquery.com/jquery-3.6.0.min.js');
 	wp_enqueue_script( 'jquery' );
-  wp_enqueue_style( 'swiper-slider', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', 'style', time());
-  wp_enqueue_style( 'universal-theme', get_template_directory_uri() . '/assets/css/universal-theme.css', 'style', time());
-  wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', 'swiper', time(), true);
-  wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/js/scripts.js', null, time(), true);
+  wp_enqueue_style( 'swiper-slider', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', 'style');
+  wp_enqueue_style( 'universal-theme', get_template_directory_uri() . '/assets/css/universal-theme.css', 'style');
+  wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', 'swiper', null, true);
+  wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/js/scripts.js', null, null, true);
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_universal_style' );
 
@@ -811,8 +821,8 @@ function ajax_form() {
 	$contact_name = $_POST['contact_name'];
 	$contact_email = $_POST['contact_email'];
 	$contact_comment = $_POST['contact_comment'];
-	$message = 'Пользователь оставил заявку. Его имя: ' . $contact_name . '<br> Его email: ' . $contact_email . '<br> Текст заявки: ' . $contact_comment;
-	$headers = 'From: Назар <nazar.webrazrabotchik@yandex.ua>' . "\r\n";
+	$message = 'Пользователь оставил заявку. Его имя: ' . $contact_name . '<br/> Его email: ' . $contact_email . '<br/> Текст заявки: ' . $contact_comment;
+	$headers = ["From: Назар <nazar.webrazrabotchik@yandex.ua>\r\n", 'content-type: text/html'];
 	$sent_message = wp_mail('nazar.webrazrabotchik@yandex.ru', 'Новая заявка с сайта', $message, $headers);
 	echo $sent_message ? 'успех' : 'ошибка';
 

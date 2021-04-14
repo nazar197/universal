@@ -2601,3 +2601,21 @@ nav.navigation.pagination {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+
+.breadcrumbs {
+  margin-top: 50px;
+  color: #262D33;
+  font-size: 14px;
+  line-height: 20px;
+}
+.breadcrumbs__separator {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.breadcrumbs__link {
+  text-decoration: none;
+  color: inherit;
+}
+.breadcrumbs__link:visited {
+  color: inherit;
+}
