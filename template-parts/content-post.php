@@ -35,8 +35,8 @@
                 <svg width="15" height="7" class="icon prev-icon">
                   <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
                 </svg>
-              ' . esc_html__( 'Назад', 'universal-theme' ) . '</span>',
-              'next_text' => '<span class="post-nav-next">' . esc_html__( 'Вперед', 'universal-theme' ) . '
+              ' . esc_html__( 'Back', 'universal-theme' ) . '</span>',
+              'next_text' => '<span class="post-nav-next">' . esc_html__( 'Next', 'universal-theme' ) . '
                 <svg width="15" height="7" class="icon next-icon">
                   <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
                 </svg>
@@ -94,7 +94,7 @@
             <div class="post-author-info">
               <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="post-author-avatar">
               <span class="post-author-name"><?php the_author() ?></span>
-              <span class="post-author-rank">Должность</span>
+              <span class="post-author-rank"><?php _e('User rank', 'universal-theme') ?></span>
               <span class="post-author-posts">
                 <?php plural_form( count_user_posts( $author_id ),
                   /* варианты написания для количества 1, 2 и 5 */
@@ -103,7 +103,7 @@
             </div>
             <!-- /.post-author-info -->
             <a href="<?php echo get_author_posts_url($author_id); ?>" class="post-author-link">
-              Страница автора
+              <?php _e('Author\'s page', 'universal-theme') ?>
             </a>
           </div>
           <!-- /.post-author -->

@@ -2,10 +2,10 @@
     <div class="container">
       <?php if( ! is_page( 'thankyou' ) && ! is_404()  ) : ?>
       <div class="footer-form-wrapper">
-        <h3 class="footer-form-title">Подпишитесь на нашу рассылку</h3>
+        <h3 class="footer-form-title"><?php _e('Subscribe to our newsletter ', 'universal-theme') ?></h3>
         <form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post" class="footer-form">
           <!-- Email field (required) -->
-          <input type="text" name="email" placeholder="Введите email" required/><br/>
+          <input type="text" name="email" placeholder="<?php _e('Input your email', 'universal-theme') ?>" required/><br/>
           <!-- List token -->
           <!-- Get the token at: https://app.getresponse.com/campaign_list.html -->
           <input type="hidden" name="campaign_token" value="oNoKy" />
@@ -14,7 +14,7 @@
           <!-- Add subscriber to the follow-up sequence with a specified day (optional) -->
           <input type="hidden" name="start_day" value="0" />
           <!-- Subscriber button -->
-          <button type="submit">Подписаться</button>
+          <button type="submit"><?php _e('Subscribe', 'universal-theme') ?></button>
         </form>
       </div>
       <!-- /.footer-form -->
@@ -45,6 +45,7 @@
             'menu_class' => 'footer-nav', 
             'echo'            => true,
           ] );
+          
         $instance = array(
           'facebook' => 'https://fb.com/',
           'instagram' => 'https://instagram.com/',

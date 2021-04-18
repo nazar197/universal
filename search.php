@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="container">
   <h1 class="search-title">
-    Результаты поиска по запросу: 
+    <?php _e('Search results:', 'universal-theme') ?>
     <?php if (!empty($_GET['s'])) { 
       echo esc_html($_GET['s']); 
     } ?>
@@ -77,7 +77,7 @@
         </li>
         <!-- /.digest-item -->
         <?php } if( ! have_posts() ) {?>
-          Записей нет
+          <?php _e('No posts', 'universal-theme') ?>
         <?php }?>
       </ul>
       <div class="pagination-search">
@@ -86,10 +86,10 @@
           'prev_text'    => '
           <svg class="icon pagination-prev-icon">
             <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
-          </svg>
-          Назад',
-          'next_text'    => '
-          Вперед
+          </svg>' 
+          . __( 'Back', 'universal-theme' ),
+          'next_text'    => __( 'Next', 'universal-theme' )
+          . '
           <svg class="icon pagination-next-icon">
             <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
           </svg>',

@@ -48,7 +48,7 @@ function universal_theme_comment( $comment, $args, $depth ) {
   <div class="comment-content">
     <?php
     printf(
-      __( '<cite class="comment-author-name">%s</cite>' ),
+      __( '<cite class="comment-author-name">%s</cite>', 'universal-theme' ),
       get_comment_author_link()
     );
     ?>
@@ -56,18 +56,18 @@ function universal_theme_comment( $comment, $args, $depth ) {
       <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
           <?php
           printf(
-            __( '%1$s, %2$s' ),
+            __( '%1$s, %2$s', 'universal-theme' ),
             get_comment_date('F jS'),
             get_comment_time()
           ); ?>
       </a>
 
-      <?php edit_comment_link( __( '(Edit)' ), '  ', '' ); ?>
+      <?php edit_comment_link( __( '(Edit)', 'universal-theme' ), '  ', '' ); ?>
     </span>
 
     <?php if ( $comment->comment_approved == '0' ) { ?>
     <em class="comment-awaiting-moderation">
-      <?php _e( 'Your comment is awaiting moderation.' ); ?>
+      <?php _e( 'Your comment is awaiting moderation.', 'universal-theme' ); ?>
     </em><br/>
     <?php } ?>
 
@@ -105,7 +105,7 @@ function universal_theme_comment( $comment, $args, $depth ) {
       ?>
       <div class="comments-header">
         <h2 class="comments-title">
-            <?php echo 'Комментарии ' . '<span class="comments-count">' . get_comments_number() . '</span>'; ?>
+            <?php __('Comments ', 'universal-theme') . '<span class="comments-count">' . get_comments_number() . '</span>'; ?>
         </h2>
         <a href="<?php 
           echo is_user_logged_in() 
@@ -115,7 +115,7 @@ function universal_theme_comment( $comment, $args, $depth ) {
             <svg width="19" height="15" class="icon comments-add-icon">
               <use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#pencil"></use>
             </svg>
-            <span>Добавить комментарий</span>
+            <span><?php _e('Add a new comment', 'universal-theme') ?></span>
         </a>
       </div>
       <!-- .comments-header -->
@@ -132,7 +132,7 @@ function universal_theme_comment( $comment, $args, $depth ) {
             'short_ping' => true,
             'avatar_size' => 75,
             'callback' => 'universal_theme_comment',
-            'login_text' => 'Зарегестрируйтесь, если хотите прокомментировать.',
+            'login_text' => __('Register please for adding comments.', 'universal-theme'),
           )
         );
         ?>
@@ -153,7 +153,7 @@ function universal_theme_comment( $comment, $args, $depth ) {
     comment_form(array(
       'title_reply'          => '',
       'comment_field'        => '
-        <label class="comment-label" for="comment">Что вы думаете на этот счет?</label>        
+        <label class="comment-label" for="comment">' . __( 'What do you think?', 'universal-theme' ) . '</label>        
         <div class="comment-wrapper">
           <div class="avatar">' . get_avatar( get_current_user_id(), 75 ) . '</div>
           <div class="comment-textarea-wrapper">
@@ -161,17 +161,17 @@ function universal_theme_comment( $comment, $args, $depth ) {
           </div>            
         </div>',
       'must_log_in' => '<p class="must-log-in">' .
-        sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters(
+        sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'universal-theme' ), wp_login_url( apply_filters(
         'the_permalink', get_permalink() ) ) ) . '
       </p>',
       'logged_in_as' => '',
       'comment_notes_before' => '<p class="comment-notes">
-        <span id="email-notes">' . __( 'Your email address will not be published.' ) . '</span>'.
+        <span id="email-notes">' . __( 'Your email address will not be published.', 'universal-theme' ) . '</span>'.
         ( $req ? $required_text : '' ) . '
       </p>',
       'class_submit' => 'comment-submit more',
       'submit_button' => '<button name="%1$s" type="submit" id="%2$s" class="%3$s">%4$s</button>',
-      'label_submit' => 'Отправить', 
+      'label_submit' => __('Send', 'universal-theme'), 
     ));
     ?>
 

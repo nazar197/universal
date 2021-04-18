@@ -28,7 +28,7 @@
           <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="avatar">
           <div class="author-bio">
             <span class="author-name"><?php the_author() ?></span>
-            <span class="author-rank">Разработчик</span>
+            <span class="author-rank"><?php _e('User rank', 'universal-theme') ?></span>
           </div>
         </a>
         <div class="post-text">
@@ -43,12 +43,12 @@
             }
           ?>
           <h2 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...'); ?></h2>
-          <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
+          <a href="<?php echo get_the_permalink(); ?>" class="more"><?php _e('Read more', 'universal-theme') ?></a>
         </div>
       <?php 
         }
       } else {
-        ?><p>Постов нет</p><?php 
+        ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
       }
 
       wp_reset_postdata(); // Сбрасываем $post
@@ -56,7 +56,7 @@
       </div>
       <!-- /.left -->
       <div class="right">
-          <h3 class="recommend">Рекомендуем</h3>
+          <h3 class="recommend"><?php _e('Our recommendations', 'universal-theme') ?></h3>
           <ul class="posts-list">
           <?php
           global $post;
@@ -90,7 +90,7 @@
             <?php 
               }
             } else {
-              ?><p>Постов нет</p><?php 
+              ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
             }
 
             wp_reset_postdata(); // Сбрасываем $post
@@ -132,7 +132,7 @@
     <?php 
       }
     } else {
-      ?><p>Постов нет</p><?php 
+      ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
     }
 
     wp_reset_postdata(); // Сбрасываем $post
@@ -331,7 +331,7 @@
           }
         }
       } else {
-        ?><p>Постов нет</p><?php 
+        ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
       }
 
       wp_reset_postdata(); // Сбрасываем $post
@@ -359,7 +359,7 @@ if ( $query->have_posts() ) {
 		<section class="investigation" style="background: linear-gradient(0deg, rgba(64, 48, 61, 0.45), rgba(64, 48, 61, 0.45)), url(<?php echo esc_url(get_the_post_thumbnail_url()); ?>) no-repeat center center">
       <div class="container">
         <h2 class="investigation-title"><?php the_title(); ?></h2>
-        <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
+        <a href="<?php echo get_the_permalink(); ?>" class="more"><?php _e('Read more', 'universal-theme') ?></a>
       </div>
       <!-- /.container -->
     </section>
@@ -367,7 +367,7 @@ if ( $query->have_posts() ) {
 <?php 
     }
   } else {
-    ?><p>Постов нет</p><?php 
+    ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
   }
   
   wp_reset_postdata(); // Сбрасываем $post
@@ -458,7 +458,7 @@ if ( $query->have_posts() ) {
         <?php 
             }
           } else {
-            ?><p>Постов нет</p><?php 
+            ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
           }
           
           wp_reset_postdata(); // Сбрасываем $post
@@ -542,7 +542,7 @@ if ( $query->have_posts() ) {
       <?php 
           }
         } else {
-          ?><p>Постов нет</p><?php 
+          ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
         }
 
         wp_reset_postdata(); // Сбрасываем $post
@@ -573,11 +573,11 @@ if ( $query->have_posts() ) {
           ?>
           <h3 class="career-post-title"><?php the_title(); ?></h3>
           <p class="career-post-excerpt"><?php echo get_the_excerpt(); ?></p>
-          <a href="<?php the_permalink(); ?>" class="more">Читать далее</a>
+          <a href="<?php the_permalink(); ?>" class="more"><?php _e('Read more', 'universal-theme') ?></a>
         <?php 
             }
           } else {
-            ?><p>Постов нет</p><?php
+            ?><p><?php _e('No posts', 'universal-theme') ?></p><?php
           }
 
           wp_reset_postdata(); // Сбрасываем $post
@@ -616,7 +616,7 @@ if ( $query->have_posts() ) {
         <?php 
             }
           } else {
-            ?><p>Постов нет</p><?php 
+            ?><p><?php _e('No posts', 'universal-theme') ?></p><?php 
           }
           
           wp_reset_postdata(); // Сбрасываем $post

@@ -3,7 +3,7 @@
   <?php  if ( function_exists( 'the_breadcrumbs' ) ) the_breadcrumbs(); ?>
   <h1 class="category-title"><?php single_cat_title(); ?></h1>
   <div class="post-list">
-  <?php while ( have_posts() ){ the_post(); ?>
+  <?php while ( have_posts() ) { the_post(); ?>
     <div class="post-card">
       <a href="<?php the_permalink(); ?>" class="post-card-link">
         <img src="
@@ -57,20 +57,19 @@
     <!-- /.post-card -->
   <?php } 
   if ( ! have_posts() ){ ?>
-    Записей нет
+    <?php _e('No posts', 'universal-theme') ?>
   <?php } ?>
   </div>
   <!-- /.posts-list -->
   <div class="pagination-category">
     <?php 
       $args = array(
-        'prev_text'    => '
-        <svg class="icon pagination-prev-icon">
+        'prev_text'    => '<svg class="icon pagination-prev-icon">
           <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
-        </svg>
-        Назад',
-        'next_text'    => '
-        Вперед
+        </svg>' 
+        . __( 'Back', 'universal-theme' ),
+        'next_text'    => __( 'Next', 'universal-theme' )
+        . '
         <svg class="icon pagination-next-icon">
           <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
         </svg>',
