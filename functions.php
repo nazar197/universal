@@ -4,7 +4,23 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
   function universal_theme_setup() {
 		// Подключение файлов перевода
 		load_theme_textdomain( 'universal-theme', get_template_directory() . '/languages' );
-
+		
+		// Удаляем роль при деактивации нашей темы
+		add_action( 'switch_theme', 'deactivate_universal_theme' );
+		function deactivate_universal_theme() {
+			remove_role( 'developer' );
+			remove_role( 'designer' );
+			remove_role( 'photograph' );
+		}
+		// Добавляем роль при активации нашей темы
+		add_action( 'after_switch_theme', 'activate_universal_theme' );
+		function activate_universal_theme() {
+			$author = get_role( 'author' );
+			add_role( 'developer', __('Developer', 'universal-theme'), $author->capabilities );
+			add_role( 'designer', __('Designer', 'universal-theme'), $author->capabilities );
+			add_role( 'photograph', __('Photograph', 'universal-theme'), $author->capabilities );
+		}
+		
     // Добавление тега title
     add_theme_support( 'title-tag' );
     
@@ -24,6 +40,17 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
       'header_menu' => __('Menu in header', 'universal-theme'),
       'footer_menu' => __('Menu in footer', 'universal-theme')
     ] );
+
+		//Переименование роли администратора
+		function admin_change_role_name() {
+			global $wp_roles;
+			if ( ! isset( $wp_roles ) ) {
+					$wp_roles = new WP_Roles();
+			}
+			$wp_roles->roles['administrator']['name'] = __('Administrator', 'universal-theme');
+			$wp_roles->role_names['administrator'] = __('Administrator', 'universal-theme');
+		}
+		add_action('init', 'admin_change_role_name');
 
 		// Регистрируем новый тип записей
     add_action( 'init', 'register_post_types' );

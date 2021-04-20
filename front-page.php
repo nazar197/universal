@@ -28,7 +28,15 @@
           <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="avatar">
           <div class="author-bio">
             <span class="author-name"><?php the_author() ?></span>
-            <span class="author-rank"><?php _e('User rank', 'universal-theme') ?></span>
+            <span class="author-rank">
+              <?php 
+                $roles = wp_roles()->roles;
+                $current_role = get_the_author_meta('roles', $author_id)[0];
+                foreach ($roles as $role => $value) {
+                  if ($role == $current_role) { echo $value['name']; }
+                } 
+              ?>
+            </span>
           </div>
         </a>
         <div class="post-text">
@@ -523,7 +531,15 @@ if ( $query->have_posts() ) {
             <img src="<?php echo get_avatar_url($author_id); ?>" alt="avatar" class="author-avatar">
             <div class="author-bio">
               <span class="author-name"><?php the_author() ?></span>
-              <span class="author-rank">Разработчик</span>
+              <span class="author-rank">
+                <?php 
+                  $roles = wp_roles()->roles;
+                  $current_role = get_the_author_meta('roles', $author_id)[0];
+                  foreach ($roles as $role => $value) {
+                    if ($role == $current_role) { echo $value['name']; }
+                  } 
+                ?>
+              </span>
             </div>
           </a>
           <!-- /.author -->
