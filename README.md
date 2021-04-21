@@ -27,9 +27,9 @@ GloAcedemy WordPress course project. [ Project status: <span style="color:yellow
 - [x] ~~22. Add custom fields to the contacts page & the footer~~
 - [x] ~~23. Create an own post type - lesson~~
 - [x] ~~24. Add taxonomies(genre, teacher)~~
-- [ ] 25. Add breadcrumbs(additional)
-- [ ] 26. Implement a theme translation(additional)
-- [ ] 27. Set roles for users(additional)
+- [x] ~~25. Add breadcrumbs(additional)~~
+- [x] ~~26. Implement a theme translation(additional)~~
+- [x] ~~27. Set roles for users(additional)~~
 - [x] ~~28. Deploy a site on a hosting(current tmp-version)~~
 - [ ] 29. Set the SEO for the site(additional)
 - [x] ~~30. Create a 404 page(additional)~~
